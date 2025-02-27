@@ -1,0 +1,88 @@
+# Зависимости от пакетов
+## Бинарные файлы пакетов
+*.7z
+*.dll
+*.exe
+*.o
+*.so
+
+## Файлы пакетов
+*.nupkg
+*.nuspec
+
+# Пользовательские настройки
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Сгенерированные файлы
+bin/
+obj/
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.cache
+*.ilk
+*.pdb
+*.idb
+*.log
+*.pch
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.embed
+*.intermediate
+*.obj
+*.pch
+*.pdb
+*.res
+*.resources
+*.sbr
+*.tlb
+*.tli
+*.tlh
+
+# Файлы IntelliSense
+*.sdf
+*.suo
+*.opensdf
+
+# Проекты Visual Studio
+.vs/
+.vscode/
+*.[Cc]sproj.user
+*.vbproj.user
+*.user
+*.vcxproj.filters
+*.vcxproj.user
+*.dbmdl
+*.dbproj.schemaview
+*.pfx
+*.publishsettings
+
+# Файлы WPF
+## Файлы сгенерированные XAML
+*.g.cs
+*.g.i.cs
+
+## Файлы ресурсов
+*.resources
+*.resx
+
+# Другие
+*.log
+*.tmp
+*.swp
+*~
+*.bak
+*.orig
+*.rej
+*.scc
+*.vssscc
+*.vcs
+*.vspscc
+*.sublime-project
+*.sublime-workspace
+*.idea/
+*.vscode/
