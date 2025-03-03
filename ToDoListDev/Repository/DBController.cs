@@ -7,7 +7,7 @@ using Task = ToDoListDev.Models.Task;
 
 namespace ToDoListDev.Repository
 {
-    public class DBControler
+    public class DBController
     {
         private static DbToDoListContext Context = new DbToDoListContext();
 
