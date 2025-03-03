@@ -36,7 +36,6 @@ namespace ToDoListDev.Repository
             {
                 Context.Tasks.Find(ChangedTask.Id).Title = ChangedTask.Title;
                 Context.Tasks.Find(ChangedTask.Id).Description = ChangedTask.Description;
-                Context.Tasks.Find(ChangedTask.Id).CreateDate = ChangedTask.CreateDate;
                 Context.Tasks.Find(ChangedTask.Id).CompletionDate = ChangedTask.CompletionDate;
                 Context.SaveChanges();
                 return true;

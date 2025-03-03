@@ -12,7 +12,7 @@ namespace ToDoListDev.Repository
         List<Task> GetTasks();
         bool AddTask(Task NewTask);
         bool UpdateTask(Task NewTask);
-        bool DeleteTask(int TaskId);
+        bool DeleteTask(Task DeletTask);
         bool CompletingTask(int TaskId);
     }
 }
