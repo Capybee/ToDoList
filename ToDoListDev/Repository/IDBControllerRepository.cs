@@ -10,9 +10,9 @@ namespace ToDoListDev.Repository
     public interface IDBControllerRepository
     {
         List<Task> GetTasks();
-        bool AddTask();
-        bool UpdateTask();
-        bool DeleteTask();
-        bool CompletingTask();
+        bool AddTask(Task NewTask);
+        bool UpdateTask(Task NewTask);
+        bool DeleteTask(int TaskId);
+        bool CompletingTask(int TaskId);
     }
 }
