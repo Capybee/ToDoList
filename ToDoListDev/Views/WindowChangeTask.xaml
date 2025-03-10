@@ -1,0 +1,39 @@
+﻿<Window x:Class="ToDoListDev.Views.WindowChangeTask"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDoListDev.Views"
+        mc:Ignorable="d"
+        Title="WindowChangeTask" Height="1000" Width="1400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.18*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Content="Отменить" Grid.Row="0" Width="253" Height="80" Margin="50,25,0,25" HorizontalAlignment="Left"/>
+        <Button Content="Сохранить" Grid.Row="0" Width="253" Height="80" Margin="0,25,50,25" HorizontalAlignment="Right"/>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Vertical">
+                <TextBlock Text="Заголовок" Margin="50,25,0,0" FontSize="30" FontWeight="Bold"/>
+                <Border Width="439" Height="2" HorizontalAlignment="Left" Margin="50,0,0,0" BorderThickness="5" BorderBrush="Black"/>
+                <TextBox Margin="50,25,50,25" Width="1300" HorizontalAlignment="Left" Height="30"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="1">
+                <TextBlock Text="Описание" Margin="50,25,0,0" FontSize="30" FontWeight="Bold"/>
+                <Border Width="439" Height="2" HorizontalAlignment="Left" Margin="50,0,0,0" BorderThickness="5" BorderBrush="Black"/>
+                <TextBox Margin="50,25,50,25" Height="220"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="2">
+                <TextBlock Text="Срок выполнения" Margin="50,25,0,0" FontSize="30" FontWeight="Bold"/>
+                <Border Width="439" Height="2" HorizontalAlignment="Left" Margin="50,0,0,0" BorderThickness="5" BorderBrush="Black"/>
+                <DatePicker Margin="50,25" Width="400" HorizontalAlignment="Left" Height="220"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
