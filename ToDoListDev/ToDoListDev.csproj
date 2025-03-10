@@ -10,11 +10,12 @@
 
   <ItemGroup>
     <None Remove="Repository\db_to_do_list.db" />
+    <None Remove="Styles\SourceSerifPro-Bold.ttf" />
+    <None Remove="Styles\SourceSerifPro-Regular.ttf" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="ViewModels\" />
-    <Folder Include="Styles\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +35,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Styles\ProjectSpace.otf" />
+    <Resource Include="Styles\SourceSerifPro-Bold.ttf" />
+    <Resource Include="Styles\SourceSerifPro-Regular.ttf" />
   </ItemGroup>
 
 </Project>

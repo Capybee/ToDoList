@@ -9,16 +9,16 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
-            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.07*"/>
             <RowDefinition/>
-            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.15*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="To-Do List" FontSize="50" FontWeight="Bold" Margin="50,2,0,2"/>
+            <TextBlock Grid.Column="0" Text="To-Do List" FontSize="{DynamicResource Logo}" FontFamily="{DynamicResource LogoFont}" FontWeight="Bold" Margin="50,2,0,2"/>
             <Border Grid.Column="1" Width="113" Height="58" HorizontalAlignment="Right" Margin="0,2,50,2" BorderThickness="2" BorderBrush="Black" CornerRadius="40">
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="BtnLeft" Margin="10,4" Width="40" Height="40" HorizontalAlignment="Left" BorderThickness="0"/>
@@ -26,7 +26,7 @@
                 </StackPanel>
             </Border>
         </Grid>
-        <TextBlock Grid.Row="1" Text="Список задач" FontSize="30" Margin="50,0" FontWeight="Bold" HorizontalAlignment="Left"/>
+        <TextBlock Grid.Row="1" Text="Список задач" FontSize="40" Margin="50,0" FontWeight="Bold" HorizontalAlignment="Left"/>
         <DataGrid Grid.Row="2" HeadersVisibility="None">
             
         </DataGrid>

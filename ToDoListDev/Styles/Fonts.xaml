@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <FontFamily x:Key="LogoFont">pack://application:,,,/Styles/ProjectSpace.otf#PROJECT SPACE</FontFamily>
+    <FontFamily x:Key="BoldFont">pack://application:,,,/Styles/SourceSerifPro-Bold.ttf#Source Serif Pro</FontFamily>
+    <FontFamily x:Key="MainFont">pack://application:,,,/Styles/SourceSerifPro-Regular.ttf#Source Serif Pro</FontFamily> 
+
+    <system:Double x:Key="Logo">50</system:Double>
+    <system:Double x:Key="Title">30</system:Double>
+    <system:Double x:Key="MainSize">22</system:Double>
+</ResourceDictionary>

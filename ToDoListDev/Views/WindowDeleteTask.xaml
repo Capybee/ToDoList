@@ -30,13 +30,6 @@
         <DataGrid Grid.Row="2" HeadersVisibility="None">
 
         </DataGrid>
-        <Grid Grid.Row="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="Добавить" Width="313" Height="80" HorizontalAlignment="Left" Margin="50,2,0,2"/>
-            <Button Grid.Column="1" Content="Удалить" Width="253" Height="80" HorizontalAlignment="Right" Margin="0,2,50,2"/>
+        <Button Grid.Row="3"  Content="Удалить" Width="253" Height="80" HorizontalAlignment="Center" Margin="0,2,50,2"/>
         </Grid>
-    </Grid>
 </Window>
