@@ -6,6 +6,7 @@
     <FontFamily x:Key="MainFont">pack://application:,,,/Styles/SourceSerifPro-Regular.ttf#Source Serif Pro</FontFamily> 
 
     <system:Double x:Key="Logo">50</system:Double>
-    <system:Double x:Key="Title">30</system:Double>
+    <system:Double x:Key="Title1">40</system:Double>
+    <system:Double x:Key="Title2">30</system:Double>
     <system:Double x:Key="MainSize">22</system:Double>
 </ResourceDictionary>

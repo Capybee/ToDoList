@@ -2,9 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Color x:Key="MainBlackColor">#1e1e1e</Color>
     <Color x:Key="AccentColor">#0D81B4</Color>
-    <Color x:Key="MainWhiteColor">#eeeeee</Color>
+    <Color x:Key="MainWhiteColor">#ffffff</Color>
+    <Color x:Key="MouseOverColor">#def4fd</Color>
 
     <SolidColorBrush x:Key="MainBlackBrush" Color="{DynamicResource MainBlackColor}"/>
     <SolidColorBrush x:Key="AccentBrush" Color="{DynamicResource AccentColor}"/>
     <SolidColorBrush x:Key="MainWhite" Color="{DynamicResource MainWhiteColor}"/>
+    <SolidColorBrush x:Key="MouseOverBrush" Color="{DynamicResource MouseOverColor}"/>
 </ResourceDictionary>

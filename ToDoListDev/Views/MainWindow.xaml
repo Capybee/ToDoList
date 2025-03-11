@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoListDev"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
         Title="MainWindow" Height="1080" Width="1920">
     <Grid>
         <Grid.RowDefinitions>
@@ -18,25 +20,30 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="To-Do List" FontSize="{DynamicResource Logo}" FontFamily="{DynamicResource LogoFont}" FontWeight="Bold" Margin="50,2,0,2"/>
-            <Border Grid.Column="1" Width="113" Height="58" HorizontalAlignment="Right" Margin="0,2,50,2" BorderThickness="2" BorderBrush="Black" CornerRadius="40">
+            <TextBlock Grid.Column="0" Text="To-Do List" Foreground="{DynamicResource AccentBrush}" FontSize="{DynamicResource Logo}" FontFamily="{DynamicResource LogoFont}" FontWeight="Bold" Margin="50,2,0,2"/>
+            <Border x:Name="SwitchBorder" Grid.Column="1" Width="113" Height="58" HorizontalAlignment="Right" Margin="0,2,50,2" BorderThickness="2" BorderBrush="Black" CornerRadius="30">
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="BtnLeft" Margin="10,4" Width="40" Height="40" HorizontalAlignment="Left" BorderThickness="0"/>
-                    <Button x:Name="BtnRight" Margin="0,4,10,4" Width="40" Height="40" HorizontalAlignment="Right" BorderThickness="0"/>
+                    <Button Style="{DynamicResource StyleSwitchButton}" x:Name="BtnLeft" Background="{DynamicResource MainBlackBrush}" Margin="10,4" Width="40" Height="40" HorizontalAlignment="Left" BorderThickness="0" Click="BtnLeft_Click"/>
+                    <Button Style="{DynamicResource StyleSwitchButton}" x:Name="BtnRight" Background="{DynamicResource MainWhite}" Margin="0,4,10,4" Width="40" Height="40" HorizontalAlignment="Right" BorderThickness="0" Click="BtnRight_Click"/>
                 </StackPanel>
             </Border>
         </Grid>
-        <TextBlock Grid.Row="1" Text="Список задач" FontSize="40" Margin="50,0" FontWeight="Bold" HorizontalAlignment="Left"/>
-        <DataGrid Grid.Row="2" HeadersVisibility="None">
-            
+        <TextBlock Grid.Row="1" Text="Список задач" FontSize="{DynamicResource Title1}" Margin="50,0" FontFamily="{DynamicResource BoldFont}" FontWeight="Bold" HorizontalAlignment="Left"/>
+        <DataGrid Margin="0,20,0,0" Grid.Row="2" HeadersVisibility="None" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Width="0.1*"/>
+                <DataGridTextColumn Header="Title" Width="0.5*"/>
+                <DataGridTextColumn Header="CompletionDate" Width="0.2*"/>
+                <DataGridCheckBoxColumn Header="IsFinal" Width="0.2*"/>
+            </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="Добавить" Width="313" Height="80" HorizontalAlignment="Left" Margin="50,2,0,2"/>
-            <Button Grid.Column="1" Content="Удалить" Width="253" Height="80" HorizontalAlignment="Right" Margin="0,2,50,2"/>
+            <Button Grid.Column="0" Content="Добавить" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleAddButton}" Width="313" Height="80" HorizontalAlignment="Left" Margin="50,2,0,2"/>
+            <Button Grid.Column="1" Content="Удалить" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleDeleteButton}" Width="253" Height="80" HorizontalAlignment="Right" Margin="0,2,50,2"/>
         </Grid>
     </Grid>
 </Window>
