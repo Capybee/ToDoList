@@ -42,8 +42,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="Добавить" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleAddButton}" Width="313" Height="80" HorizontalAlignment="Left" Margin="50,2,0,2"/>
-            <Button Grid.Column="1" Content="Удалить" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleDeleteButton}" Width="253" Height="80" HorizontalAlignment="Right" Margin="0,2,50,2"/>
+            <Button Grid.Column="0" Content="Добавить" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleButtonWithFullBorder}" Width="313" Height="80" HorizontalAlignment="Left" Margin="50,2,0,2"/>
+            <Button Grid.Column="1" Content="Удалить" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleButtonWithBottomBorder}" Width="253" Height="80" HorizontalAlignment="Right" Margin="0,2,50,2"/>
         </Grid>
     </Grid>
 </Window>

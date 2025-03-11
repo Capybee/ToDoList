@@ -51,7 +51,7 @@
     </Style>
     
     <!--Стиль кнопки добавления-->
-    <Style x:Key="StyleAddButton" TargetType="{x:Type Button}">
+    <Style x:Key="StyleButtonWithFullBorder" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{DynamicResource MainWhite}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource MainBlackBrush}"/>
@@ -87,7 +87,7 @@
     </Style>
 
     <!--Стиль кнопки удаления-->
-    <Style x:Key="StyleDeleteButton" TargetType="{x:Type Button}">
+    <Style x:Key="StyleButtonWithBottomBorder" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{DynamicResource MainWhite}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource MainBlackBrush}"/>
