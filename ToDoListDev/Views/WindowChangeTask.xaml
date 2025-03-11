@@ -13,8 +13,8 @@
             <RowDefinition Height="0.18*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Content="Отменить" Grid.Row="0" Width="253" Height="80" Margin="50,25,0,25" HorizontalAlignment="Left"/>
-        <Button Content="Сохранить" Grid.Row="0" Width="253" Height="80" Margin="0,25,50,25" HorizontalAlignment="Right"/>
+        <Button Content="Отменить" Style="{DynamicResource StyleButtonWithBottomBorder}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Grid.Row="0" Width="253" Height="80" Margin="50,25,0,25" HorizontalAlignment="Left"/>
+        <Button Content="Сохранить" Style="{DynamicResource StyleButtonWithBottomBorder}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Grid.Row="0" Width="253" Height="80" Margin="0,25,50,25" HorizontalAlignment="Right"/>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.5*"/>
@@ -22,19 +22,19 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Orientation="Vertical">
-                <TextBlock Text="Заголовок" Margin="50,25,0,0" FontSize="30" FontWeight="Bold"/>
+                <TextBlock Text="Заголовок" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource Title2}" Margin="50,25,0,0"/>
                 <Border Width="439" Height="2" HorizontalAlignment="Left" Margin="50,0,0,0" BorderThickness="5" BorderBrush="Black"/>
-                <TextBox Margin="50,25,50,25" Width="1300" HorizontalAlignment="Left" Height="30"/>
+                <TextBox Margin="50,25,50,25" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Width="1300" HorizontalAlignment="Left" Height="30"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Row="1">
-                <TextBlock Text="Описание" Margin="50,25,0,0" FontSize="30" FontWeight="Bold"/>
+                <TextBlock Text="Описание" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource Title2}" Margin="50,25,0,0"/>
                 <Border Width="439" Height="2" HorizontalAlignment="Left" Margin="50,0,0,0" BorderThickness="5" BorderBrush="Black"/>
-                <TextBox Margin="50,25,50,25" Height="220"/>
+                <TextBox Margin="50,25,50,25" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Height="220"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Row="2">
-                <TextBlock Text="Срок выполнения" Margin="50,25,0,0" FontSize="30" FontWeight="Bold"/>
+                <TextBlock Text="Срок выполнения" Margin="50,25,0,0" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource Title2}"/>
                 <Border Width="439" Height="2" HorizontalAlignment="Left" Margin="50,0,0,0" BorderThickness="5" BorderBrush="Black"/>
-                <DatePicker Margin="50,25" Width="400" HorizontalAlignment="Left" Height="220"/>
+                <DatePicker Margin="50,25" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Width="400" HorizontalAlignment="Left" Height="220"/>
             </StackPanel>
         </Grid>
     </Grid>
