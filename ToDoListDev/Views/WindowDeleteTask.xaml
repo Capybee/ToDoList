@@ -20,18 +20,23 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="To-Do List" FontSize="50" FontWeight="Bold" Margin="50,2,0,2"/>
-            <Border Grid.Column="1" Width="113" Height="58" HorizontalAlignment="Right" Margin="0,2,50,2" BorderThickness="2" BorderBrush="Black" CornerRadius="40">
+            <TextBlock Grid.Column="0" Text="To-Do List" Foreground="{DynamicResource AccentBrush}" FontSize="{DynamicResource Logo}" FontFamily="{DynamicResource LogoFont}" FontWeight="Bold" Margin="50,2,0,2"/>
+            <Border x:Name="SwitchBorder" Grid.Column="1" Width="113" Height="58" HorizontalAlignment="Right" Margin="0,2,50,2" BorderThickness="2" BorderBrush="Black" CornerRadius="40">
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="BtnLeft" Margin="10,4" Width="40" Height="40" HorizontalAlignment="Left" BorderThickness="0"/>
-                    <Button x:Name="BtnRight" Margin="0,4,10,4" Width="40" Height="40" HorizontalAlignment="Right" BorderThickness="0"/>
+                    <Button Style="{DynamicResource StyleSwitchButton}" x:Name="BtnLeft" Background="{DynamicResource MainBlackBrush}" Margin="10,4" Width="40" Height="40" HorizontalAlignment="Left" BorderThickness="0" Click="BtnLeft_Click"/>
+                    <Button Style="{DynamicResource StyleSwitchButton}" x:Name="BtnRight" Background="{DynamicResource MainWhite}" Margin="0,4,10,4" Width="40" Height="40" HorizontalAlignment="Right" BorderThickness="0" Click="BtnRight_Click"/>
                 </StackPanel>
             </Border>
         </Grid>
         <TextBlock Grid.Row="1" Text="Список задач" FontSize="40" Margin="50,0" FontWeight="Bold" HorizontalAlignment="Left"/>
-        <DataGrid Grid.Row="2" HeadersVisibility="None">
-
+        <DataGrid Margin="0,20,0,0" Grid.Row="2" HeadersVisibility="None">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Header="IsDeleted" Width="0.2*"/>
+                <DataGridTextColumn Header="Id" Width="0.1*"/>
+                <DataGridTextColumn Header="Title" Width="0.5*"/>
+                <DataGridTextColumn Header="CompletionDate" Width="0.2*"/>
+            </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="3"  Content="Удалить" Width="253" Height="80" HorizontalAlignment="Center" Margin="0,2,50,2"/>
+        <Button Grid.Row="3" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleButtonWithBottomBorder}" Content="Удалить" Width="253" Height="80" HorizontalAlignment="Center" Margin="0,2,50,2"/>
         </Grid>
 </Window>
