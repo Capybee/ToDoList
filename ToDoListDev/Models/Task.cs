@@ -1,21 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ToDoListDev.Models;
 
-public partial class Task
+public partial class Task : INotifyPropertyChanged
 {
-    public int Id { get; set; }
+    private int _Id;
+    public int Id
+    {
+        get { return _Id; }
+        set { _Id = value; OnPropertyChanged(nameof(Id));}
+    }
 
-    public string Title { get; set; } = null!;
+    private string _Title = null!;
+    public string Title 
+    {
+        get { return _Title; }
+        set { _Title = value; OnPropertyChanged(nameof(Title)); } 
+    }
 
-    public string Description { get; set; } = null!;
+    private string _Description = null!;
+    public string Description 
+    {
+        get { return _Description; }
+        set { _Description = value; OnPropertyChanged(nameof(Description)); } 
+    }
 
-    public string CreateDate { get; set; } = null!;
+    private string _CreateDate = null!;
+    public string CreateDate 
+    {
+        get { return _CreateDate; }
+        set { _CreateDate = value; OnPropertyChanged(nameof(CreateDate)); } 
+    }
 
-    public string CompletionDate { get; set; } = null!;
+    private string _CompletionDate = null!;
+    public string CompletionDate 
+    {
+        get { return _CompletionDate; }
+        set { _CompletionDate = value; OnPropertyChanged(nameof(CompletionDate)); } 
+    }
 
-    public int IsFinal { get; set; }
+    private int _IsFinal;
+    public int IsFinal 
+    {
+        get { return _IsFinal; }
+        set { _IsFinal = value; OnPropertyChanged(nameof(IsFinal)); } 
+    }
 
     public override bool Equals(object? obj)
     {
@@ -42,5 +74,14 @@ public partial class Task
     public static bool operator !=(Task LeftTask, Task RightTask)
     {
         return !(LeftTask == RightTask);
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+    public void OnPropertyChanged([CallerMemberName]string prop = "")
+    {
+        if(PropertyChanged != null)
+        {
+            PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
     }
 }
