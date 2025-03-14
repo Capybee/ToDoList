@@ -4,10 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoListDev"
+        xmlns:data="clr-namespace:ToDoListDev.ViewModels"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
         Title="MainWindow" Height="1080" Width="1920">
+    <Window.DataContext>
+        <data:MainWindowVM/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
@@ -29,12 +33,12 @@
             </Border>
         </Grid>
         <TextBlock Grid.Row="1" Text="Список задач" FontSize="{DynamicResource Title1}" Margin="50,0" FontFamily="{DynamicResource BoldFont}" FontWeight="Bold" HorizontalAlignment="Left"/>
-        <DataGrid Margin="0,20,0,0" Grid.Row="2" HeadersVisibility="None" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}">
+        <DataGrid Margin="0,20,0,0" Grid.Row="2" HeadersVisibility="None" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" ItemsSource="{Binding Tasks}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Width="0.1*"/>
-                <DataGridTextColumn Header="Title" Width="0.5*"/>
-                <DataGridTextColumn Header="CompletionDate" Width="0.2*"/>
-                <DataGridCheckBoxColumn Header="IsFinal" Width="0.2*"/>
+                <DataGridTextColumn Header="Id" Width="0.1*" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Title" Width="0.5*" Binding="{Binding Title}"/>
+                <DataGridTextColumn Header="CompletionDate" Width="0.2*" Binding="{Binding CompletionDate}"/>
+                <DataGridCheckBoxColumn Header="IsFinal" Width="0.2*" Binding="{Binding IsFinal}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="3">
@@ -42,8 +46,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="Добавить" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleButtonWithFullBorder}" Width="313" Height="80" HorizontalAlignment="Left" Margin="50,2,0,2"/>
-            <Button Grid.Column="1" Content="Удалить" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleButtonWithBottomBorder}" Width="253" Height="80" HorizontalAlignment="Right" Margin="0,2,50,2"/>
+            <Button Grid.Column="0" Content="Добавить" Command="{Binding BtnAddTaskClick}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleButtonWithFullBorder}" Width="313" Height="80" HorizontalAlignment="Left" Margin="50,2,0,2"/>
+            <Button Grid.Column="1" Content="Удалить" Command="{Binding BtnDeleteTaskCLick}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleButtonWithBottomBorder}" Width="253" Height="80" HorizontalAlignment="Right" Margin="0,2,50,2"/>
         </Grid>
     </Grid>
 </Window>

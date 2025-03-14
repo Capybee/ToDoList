@@ -21,7 +21,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Text="To-Do List" Foreground="{DynamicResource AccentBrush}" FontSize="{DynamicResource Logo}" FontFamily="{DynamicResource LogoFont}" FontWeight="Bold" Margin="50,2,0,2"/>
-            <Border x:Name="SwitchBorder" Grid.Column="1" Width="113" Height="58" HorizontalAlignment="Right" Margin="0,2,50,2" BorderThickness="2" BorderBrush="Black" CornerRadius="40">
+            <Border x:Name="SwitchBorder" Grid.Column="1" Width="113" Height="58" HorizontalAlignment="Right" Margin="0,2,50,2" BorderThickness="2" BorderBrush="Black" CornerRadius="30">
                 <StackPanel Orientation="Horizontal">
                     <Button Style="{DynamicResource StyleSwitchButton}" x:Name="BtnLeft" Background="{DynamicResource MainBlackBrush}" Margin="10,4" Width="40" Height="40" HorizontalAlignment="Left" BorderThickness="0" Click="BtnLeft_Click"/>
                     <Button Style="{DynamicResource StyleSwitchButton}" x:Name="BtnRight" Background="{DynamicResource MainWhite}" Margin="0,4,10,4" Width="40" Height="40" HorizontalAlignment="Right" BorderThickness="0" Click="BtnRight_Click"/>

@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace ToDoListDev.ViewModels
 {
-    class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         private Action<object> _Execute;
         private Func<object, bool> _CanExecute;
@@ -18,7 +18,7 @@ namespace ToDoListDev.ViewModels
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public RelayCommand(Action<object> InputExecute, Func<object, bool> InputCanExecute)
+        public RelayCommand(Action<object> InputExecute, Func<object, bool> InputCanExecute = null)
         {
             _Execute = InputExecute;
             _CanExecute = InputCanExecute;
