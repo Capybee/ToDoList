@@ -19,11 +19,15 @@ namespace ToDoListDev.Repository
 
         public bool AddTask(Task NewTask)
         {
-            foreach(Task T in Tasks)
+            Tasks = DBController.GetTasks();
+            if (Tasks != null)
             {
-                if(T == NewTask)
+                foreach (Task T in Tasks)
                 {
-                    return false;
+                    if (T == NewTask)
+                    {
+                        return false;
+                    }
                 }
             }
 
@@ -32,6 +36,7 @@ namespace ToDoListDev.Repository
 
         public bool UpdateTask(Task NewTask)
         {
+            Tasks = DBController.GetTasks();
             foreach (Task T in Tasks)
             {
                 if(T.Id == NewTask.Id)

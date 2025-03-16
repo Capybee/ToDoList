@@ -49,6 +49,16 @@ public partial class Task : INotifyPropertyChanged
         set { _IsFinal = value; OnPropertyChanged(nameof(IsFinal)); } 
     }
 
+    public Task() { }
+
+    public Task(string InputTitle, string InputDescription, string InputCreateDate, string InputCompletionDate)
+    {
+        Title = InputTitle;
+        Description = InputDescription;
+        CreateDate = InputCreateDate;
+        CompletionDate = InputCompletionDate;
+        IsFinal = 0;
+    }
     public override bool Equals(object? obj)
     {
         if(obj is Task other)

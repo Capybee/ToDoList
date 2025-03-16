@@ -22,6 +22,14 @@ namespace ToDoListDev.ViewModels
             set { _Tasks = value; OnPropertyChanged(nameof(Tasks)); }
         }
 
+        private Task _Selectedtask;
+        public Task SelectedTask
+        {
+            get { return _Selectedtask; }
+            set { _Selectedtask = value; OnPropertyChanged(nameof(SelectedTask)); }
+        }
+
+
         public MainWindowVM()
         {
             Tasks = Repository.GetTasks();
@@ -58,6 +66,25 @@ namespace ToDoListDev.ViewModels
                     WindowDeleteTaskInstance.DataContext = WindowDeleteTaskVMInstance;
 
                     if(WindowDeleteTaskInstance.ShowDialog() == true)
+                    {
+                        Tasks = Repository.GetTasks();
+                    }
+                }));
+            }
+        }
+
+        private RelayCommand _SelectedTaskDoubleClick;
+        public RelayCommand SelectedTaskDoubleClick
+        {
+            get
+            {
+                return _SelectedTaskDoubleClick ?? (_SelectedTaskDoubleClick = new RelayCommand(obj =>
+                {
+                    WindowChangeTask WindowChangeTaskInstance = new WindowChangeTask();
+                    WindowChangeTaskVM WindowChangeTaskVMInstance = new WindowChangeTaskVM();
+                    WindowChangeTaskInstance.DataContext = WindowChangeTaskVMInstance;
+
+                    if(WindowChangeTaskInstance.ShowDialog() == true)
                     {
                         Tasks = Repository.GetTasks();
                     }

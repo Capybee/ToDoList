@@ -4,17 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoListDev.Views"
+        xmlns:data ="clr-namespace:ToDoListDev.ViewModels"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
         Title="WindowAddTask" Height="1000" Width="1400">
+    <Window.DataContext>
+        <data:WindowAddTaskVM/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.18*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Content="Отменить" Grid.Row="0" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Width="253" Height="80" Margin="50,25,0,25" HorizontalAlignment="Left" Style="{DynamicResource StyleButtonWithBottomBorder}"/>
-        <Button Content="Добавить" Grid.Row="0" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Width="253" Height="80" Margin="0,25,50,25" HorizontalAlignment="Right" Style="{DynamicResource StyleButtonWithBottomBorder}"/>
+        <Button Content="Отменить" Command="{Binding BtnCancelClick}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Grid.Row="0" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Width="253" Height="80" Margin="50,25,0,25" HorizontalAlignment="Left" Style="{DynamicResource StyleButtonWithBottomBorder}"/>
+        <Button Content="Добавить" Command="{Binding BtnAddClick}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Grid.Row="0" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Width="253" Height="80" Margin="0,25,50,25" HorizontalAlignment="Right" Style="{DynamicResource StyleButtonWithBottomBorder}"/>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.5*"/>
@@ -24,17 +28,17 @@
             <StackPanel Grid.Row="0" Orientation="Vertical">
                 <TextBlock Text="Заголовок" Margin="50,25,0,0" FontSize="{DynamicResource Title2}" FontFamily="{DynamicResource BoldFont}" />
                 <Border Width="439" Height="2" HorizontalAlignment="Left" Margin="50,0,0,0" BorderThickness="5" BorderBrush="Black"/>
-                <TextBox Margin="50,25,50,25" Width="1300" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" HorizontalAlignment="Left" Height="30"/>
+                <TextBox Margin="50,25,50,25" Text="{Binding Title}" Width="1300" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" HorizontalAlignment="Left" Height="30"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Row="1">
                 <TextBlock Text="Описание" Margin="50,25,0,0" FontSize="{DynamicResource Title2}" FontFamily="{DynamicResource BoldFont}"/>
                 <Border Width="439" Height="2" HorizontalAlignment="Left" Margin="50,0,0,0" BorderThickness="5" BorderBrush="Black"/>
-                <TextBox Margin="50,25,50,25" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Height="220"/>
+                <TextBox Margin="50,25,50,25" Text="{Binding Description}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Height="220"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Row="2">
                 <TextBlock Text="Срок выполнения" Margin="50,25,0,0" FontSize="{DynamicResource Title2}" FontFamily="{DynamicResource BoldFont}"/>
                 <Border Width="439" Height="2" HorizontalAlignment="Left" Margin="50,0,0,0" BorderThickness="5" BorderBrush="Black"/>
-                <DatePicker FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Margin="50,25" Width="400" HorizontalAlignment="Left" Height="220"/>
+                <DatePicker Text="{Binding CompletionDate}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Margin="50,25" Width="400" HorizontalAlignment="Left" Height="220"/>
             </StackPanel>
         </Grid>
     </Grid>
