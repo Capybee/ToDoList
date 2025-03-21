@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using ToDoListDev.Repository;
 using ToDoListDev.Views;
 using Task = ToDoListDev.Models.Task;
@@ -22,11 +23,11 @@ namespace ToDoListDev.ViewModels
             set { _Tasks = value; OnPropertyChanged(nameof(Tasks)); }
         }
 
-        private Task _Selectedtask;
+        private Task _SelectedTask;
         public Task SelectedTask
         {
-            get { return _Selectedtask; }
-            set { _Selectedtask = value; OnPropertyChanged(nameof(SelectedTask)); }
+            get { return _SelectedTask; }
+            set { _SelectedTask = value; OnPropertyChanged(nameof(SelectedTask)); }
         }
 
 
@@ -91,6 +92,8 @@ namespace ToDoListDev.ViewModels
                 }));
             }
         }
+
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

@@ -13,7 +13,14 @@ namespace ToDoListDev.Repository
 
         public static List<Task> GetTasks()
         {
-            return Context.Tasks.ToList();
+            List<Task> Tasks = Context.Tasks.ToList();
+
+            foreach (var T in Tasks)
+            {
+                T.IsFinalBool = Convert.ToBoolean(T.IsFinal);
+            }
+
+            return Tasks;
         }
 
         public static bool AddTask(Task NewTask)
@@ -60,11 +67,11 @@ namespace ToDoListDev.Repository
             }
         }
 
-        public static bool CompletingTask(int Id)
+        public static bool IsFinalChange(int Id, bool NewValue)
         {
             try
             {
-                Context.Tasks.Find(Id).IsFinal = 1;
+                Context.Tasks.Find(Id).IsFinal = Convert.ToInt32(NewValue);
                 Context.SaveChanges();
                 return true;
             }

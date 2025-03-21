@@ -13,6 +13,6 @@ namespace ToDoListDev.Repository
         bool AddTask(Task NewTask);
         bool UpdateTask(Task NewTask);
         bool DeleteTask(Task DeletTask);
-        bool CompletingTask(int TaskId);
+        bool IsFinalChange(int TaskId, bool NewValue);
     }
 }

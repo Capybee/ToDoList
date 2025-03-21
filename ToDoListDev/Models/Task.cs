@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
+using ToDoListDev.Repository;
 
 namespace ToDoListDev.Models;
 
@@ -46,10 +48,19 @@ public partial class Task : INotifyPropertyChanged
     public int IsFinal 
     {
         get { return _IsFinal; }
-        set { _IsFinal = value; OnPropertyChanged(nameof(IsFinal)); } 
+        set { _IsFinal = value ; OnPropertyChanged(nameof(IsFinal));} 
     }
 
-    public Task() { }
+    private bool _IsFinalBool;
+    [NotMapped]
+    public bool IsFinalBool
+    {
+        get { return _IsFinalBool; }
+        set { _IsFinalBool = value; OnPropertyChanged(nameof(IsFinalBool)); DBController.IsFinalChange(Id, IsFinalBool); }
+    }
+
+
+    public Task() {}
 
     public Task(string InputTitle, string InputDescription, string InputCreateDate, string InputCompletionDate)
     {
@@ -63,7 +74,7 @@ public partial class Task : INotifyPropertyChanged
     {
         if(obj is Task other)
         {
-            return this.Title == other.Title && this.Description == other.Title && this.IsFinal == other.IsFinal;
+            return this.Title == other.Title && this.Description == other.Description && this.IsFinal == other.IsFinal;
         }
         else
         {
@@ -73,12 +84,12 @@ public partial class Task : INotifyPropertyChanged
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(Title, Description, Title, IsFinal);
+        return HashCode.Combine(Title, Description, IsFinal);
     }
 
     public static bool operator ==(Task LeftTask, Task RightTask)
     {
-        return LeftTask.Title == RightTask.Title && LeftTask.Description == RightTask.Title && LeftTask.IsFinal == RightTask.IsFinal;
+        return LeftTask.Title == RightTask.Title && LeftTask.Description == RightTask.Description && LeftTask.IsFinal == RightTask.IsFinal;
     }
 
     public static bool operator !=(Task LeftTask, Task RightTask)

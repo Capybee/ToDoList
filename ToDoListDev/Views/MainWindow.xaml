@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoListDev"
         xmlns:data="clr-namespace:ToDoListDev.ViewModels"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:rep="clr-namespace:ToDoListDev.Repository"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
@@ -12,6 +14,9 @@
     <Window.DataContext>
         <data:MainWindowVM/>
     </Window.DataContext>
+    <Window.Resources>
+        <rep:IntToBoolConverter x:Key="IntToBoolConvert"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
@@ -33,12 +38,12 @@
             </Border>
         </Grid>
         <TextBlock Grid.Row="1" Text="Список задач" FontSize="{DynamicResource Title1}" Margin="50,0" FontFamily="{DynamicResource BoldFont}" FontWeight="Bold" HorizontalAlignment="Left"/>
-        <DataGrid Margin="0,20,0,0" Grid.Row="2" IsReadOnly="True" SelectedItem="{Binding SelectedTask}" HeadersVisibility="None" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" ItemsSource="{Binding Tasks}" AutoGenerateColumns="False">
+        <DataGrid Margin="0,20,0,0" Grid.Row="2"  CanUserAddRows="False" SelectedItem="{Binding SelectedTask}" HeadersVisibility="None" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" ItemsSource="{Binding Tasks}" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Width="0.1*" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Title" Width="0.5*" Binding="{Binding Title}"/>
                 <DataGridTextColumn Header="CompletionDate" Width="0.2*" Binding="{Binding CompletionDate}"/>
-                <DataGridCheckBoxColumn Header="IsFinal" Width="0.2*" Binding="{Binding IsFinal}"/>
+                <DataGridCheckBoxColumn Header="IsFinal" Width="0.2*" Binding="{Binding IsFinalBool}"/>
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
@@ -48,6 +53,11 @@
             <DataGrid.InputBindings>
                 <MouseBinding Gesture="LeftDoubleClick" Command="{Binding SelectedTaskDoubleClick}"/>
             </DataGrid.InputBindings>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="CellEditEnding">
+                    <i:InvokeCommandAction Command="{Binding SelectedTaskIsFinalChange}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         </DataGrid>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
