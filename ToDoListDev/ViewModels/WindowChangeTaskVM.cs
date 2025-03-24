@@ -5,7 +5,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using ToDoListDev.Repository;
+using ToDoListDev.Views;
 using Task = ToDoListDev.Models.Task;
 
 namespace ToDoListDev.ViewModels
@@ -13,6 +15,7 @@ namespace ToDoListDev.ViewModels
     public class WindowChangeTaskVM : INotifyPropertyChanged
     {
         DBControllerRepository Repository = new DBControllerRepository();
+        int TaskId;
 
         private string _Title;
         public string Title
@@ -42,6 +45,41 @@ namespace ToDoListDev.ViewModels
             Title = InputTask.Title;
             Description = InputTask.Description;
             CompletionDate = Convert.ToDateTime(InputTask.CompletionDate);
+            TaskId = InputTask.Id;
+        }
+
+        private RelayCommand _BtnCancelClick;
+        public RelayCommand BtnCancelClick
+        {
+            get 
+            {
+                return _BtnCancelClick ?? (_BtnCancelClick = new RelayCommand(obj =>
+                {
+                    Window ThisWindow = obj as Window;
+                    ThisWindow.DialogResult = true;
+                }));
+            }
+        }
+
+        private RelayCommand _BtnSaveClick;
+        public RelayCommand BtnSaveClick
+        {
+            get 
+            {
+                return _BtnSaveClick ?? (_BtnSaveClick = new RelayCommand(obj =>
+                {
+                    if(!string.IsNullOrWhiteSpace(Title))
+                    {
+                        Window ThisWindow = obj as Window;
+
+                        ThisWindow.DialogResult = Repository.UpdateTask(TaskId, Title, Description, CompletionDate);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Заголовок не может быть пустым!");
+                    }
+                }));
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

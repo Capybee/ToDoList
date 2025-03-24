@@ -82,7 +82,7 @@ namespace ToDoListDev.ViewModels
                 return _SelectedTaskDoubleClick ?? (_SelectedTaskDoubleClick = new RelayCommand(obj =>
                 {
                     WindowChangeTask WindowChangeTaskInstance = new WindowChangeTask();
-                    WindowChangeTaskVM WindowChangeTaskVMInstance = new WindowChangeTaskVM();
+                    WindowChangeTaskVM WindowChangeTaskVMInstance = new WindowChangeTaskVM(_SelectedTask);
                     WindowChangeTaskInstance.DataContext = WindowChangeTaskVMInstance;
 
                     if(WindowChangeTaskInstance.ShowDialog() == true)

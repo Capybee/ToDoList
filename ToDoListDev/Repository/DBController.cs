@@ -37,13 +37,13 @@ namespace ToDoListDev.Repository
             }
         }
 
-        public static bool UpdateTask(Task ChangedTask)
+        public static bool UpdateTask(int Id, string NewTitle, string NewDescription, DateTime NewCompletionDate)
         {
             try
             {
-                Context.Tasks.Find(ChangedTask.Id).Title = ChangedTask.Title;
-                Context.Tasks.Find(ChangedTask.Id).Description = ChangedTask.Description;
-                Context.Tasks.Find(ChangedTask.Id).CompletionDate = ChangedTask.CompletionDate;
+                Context.Tasks.Find(Id).Title = NewTitle;
+                Context.Tasks.Find(Id).Description = NewDescription;
+                Context.Tasks.Find(Id).CompletionDate = NewCompletionDate.ToString("dd.MM.yyyy");
                 Context.SaveChanges();
                 return true;
             }
