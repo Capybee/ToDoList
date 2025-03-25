@@ -4,10 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoListDev"
+        xmlns:data="clr-namespace:ToDoListDev.ViewModels"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:rep="clr-namespace:ToDoListDev.Repository"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
         Title="MainWindow" Height="1080" Width="1920">
+    <Window.DataContext>
+        <data:MainWindowVM/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
@@ -29,21 +35,34 @@
             </Border>
         </Grid>
         <TextBlock Grid.Row="1" Text="Список задач" FontSize="{DynamicResource Title1}" Margin="50,0" FontFamily="{DynamicResource BoldFont}" FontWeight="Bold" HorizontalAlignment="Left"/>
-        <DataGrid Margin="0,20,0,0" Grid.Row="2" HeadersVisibility="None" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}">
+        <DataGrid Margin="0,20,0,0" Grid.Row="2" CanUserAddRows="False" SelectedItem="{Binding SelectedTask}" HeadersVisibility="None" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" ItemsSource="{Binding Tasks}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Width="0.1*"/>
-                <DataGridTextColumn Header="Title" Width="0.5*"/>
-                <DataGridTextColumn Header="CompletionDate" Width="0.2*"/>
-                <DataGridCheckBoxColumn Header="IsFinal" Width="0.2*"/>
+                <DataGridTextColumn Header="Id" Width="0.1*" IsReadOnly="True" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Title" Width="0.5*" IsReadOnly="True" Binding="{Binding Title}"/>
+                <DataGridTextColumn Header="CompletionDate" Width="0.2*" IsReadOnly="True" Binding="{Binding CompletionDate}"/>
+                <DataGridCheckBoxColumn Header="IsFinal" Width="0.2*" Binding="{Binding IsFinalBool}"/>
             </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Description}" FontSize="{DynamicResource MainSize}" FontFamily="{DynamicResource MainFont}" Margin="25"/>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+            <DataGrid.InputBindings>
+                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding SelectedTaskDoubleClick}"/>
+            </DataGrid.InputBindings>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="CellEditEnding">
+                    <i:InvokeCommandAction Command="{Binding SelectedTaskIsFinalChange}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         </DataGrid>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="Добавить" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleButtonWithFullBorder}" Width="313" Height="80" HorizontalAlignment="Left" Margin="50,2,0,2"/>
-            <Button Grid.Column="1" Content="Удалить" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleButtonWithBottomBorder}" Width="253" Height="80" HorizontalAlignment="Right" Margin="0,2,50,2"/>
+            <Button Grid.Column="0" Content="Добавить" Command="{Binding BtnAddTaskClick}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleButtonWithFullBorder}" Width="313" Height="80" HorizontalAlignment="Left" Margin="50,2,0,2"/>
+            <Button Grid.Column="1" Content="Удалить" Command="{Binding BtnDeleteTaskCLick}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleButtonWithBottomBorder}" Width="253" Height="80" HorizontalAlignment="Right" Margin="0,2,50,2"/>
         </Grid>
     </Grid>
 </Window>

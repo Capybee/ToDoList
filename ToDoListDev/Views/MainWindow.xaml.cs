@@ -54,5 +54,10 @@ namespace ToDoListDev
             ThisButton.IsEnabled = false;
             ThisButton.Visibility = Visibility.Hidden;
         }
+
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

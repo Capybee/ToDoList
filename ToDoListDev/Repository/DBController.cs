@@ -13,7 +13,14 @@ namespace ToDoListDev.Repository
 
         public static List<Task> GetTasks()
         {
-            return Context.Tasks.ToList();
+            List<Task> Tasks = Context.Tasks.ToList();
+
+            foreach (var T in Tasks)
+            {
+                T.IsFinalBool = Convert.ToBoolean(T.IsFinal);
+            }
+
+            return Tasks;
         }
 
         public static bool AddTask(Task NewTask)
@@ -30,13 +37,13 @@ namespace ToDoListDev.Repository
             }
         }
 
-        public static bool UpdateTask(Task ChangedTask)
+        public static bool UpdateTask(int Id, string NewTitle, string NewDescription, DateTime NewCompletionDate)
         {
             try
             {
-                Context.Tasks.Find(ChangedTask.Id).Title = ChangedTask.Title;
-                Context.Tasks.Find(ChangedTask.Id).Description = ChangedTask.Description;
-                Context.Tasks.Find(ChangedTask.Id).CompletionDate = ChangedTask.CompletionDate;
+                Context.Tasks.Find(Id).Title = NewTitle;
+                Context.Tasks.Find(Id).Description = NewDescription;
+                Context.Tasks.Find(Id).CompletionDate = NewCompletionDate.ToString("dd.MM.yyyy");
                 Context.SaveChanges();
                 return true;
             }
@@ -46,11 +53,14 @@ namespace ToDoListDev.Repository
             }
         }
 
-        public static bool DeleteTask(Task DeletedTask)
+        public static bool DeleteTasks(List<Task> DeletedTask)
         {
             try
             {
-                Context.Tasks.Remove(DeletedTask);
+                foreach (var T in DeletedTask)
+                {
+                    Context.Tasks.Remove(T);
+                }
                 Context.SaveChanges();
                 return true;
             }
@@ -60,11 +70,11 @@ namespace ToDoListDev.Repository
             }
         }
 
-        public static bool CompletingTask(int Id)
+        public static bool IsFinalChange(int Id, bool NewValue)
         {
             try
             {
-                Context.Tasks.Find(Id).IsFinal = 1;
+                Context.Tasks.Find(Id).IsFinal = Convert.ToInt32(NewValue);
                 Context.SaveChanges();
                 return true;
             }

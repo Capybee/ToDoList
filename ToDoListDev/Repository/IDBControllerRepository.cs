@@ -11,8 +11,8 @@ namespace ToDoListDev.Repository
     {
         List<Task> GetTasks();
         bool AddTask(Task NewTask);
-        bool UpdateTask(Task NewTask);
-        bool DeleteTask(Task DeletTask);
-        bool CompletingTask(int TaskId);
+        bool UpdateTask(int Id, string NewTitle, string NewDescription, DateTime NewCompletionDate);
+        bool DeleteTasks(List<Task> DeletedTask);
+        bool IsFinalChange(int TaskId, bool NewValue);
     }
 }

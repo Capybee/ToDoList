@@ -19,35 +19,29 @@ namespace ToDoListDev.Repository
 
         public bool AddTask(Task NewTask)
         {
-            foreach(Task T in Tasks)
+            Tasks = DBController.GetTasks();
+            if (Tasks != null)
             {
-                if(T == NewTask)
+                foreach (Task T in Tasks)
                 {
-                    return false;
+                    if (T == NewTask)
+                    {
+                        return false;
+                    }
                 }
             }
 
             return DBController.AddTask(NewTask);
         }
 
-        public bool UpdateTask(Task NewTask)
+        public bool UpdateTask(int Id, string NewTitle, string NewDescription, DateTime NewCompletionDate)
         {
+            Tasks = DBController.GetTasks();
             foreach (Task T in Tasks)
             {
-                if(T.Id == NewTask.Id)
+                if(T.Id == Id)
                 {
-                    if(T == NewTask)
-                    {
-                        if(T.CompletionDate == NewTask.CompletionDate)
-                        {
-                            return false;
-                        }
-                        return DBController.UpdateTask(NewTask);
-                    }
-                    else
-                    {
-                        return DBController.UpdateTask(NewTask);
-                    }
+                   return DBController.UpdateTask(Id, NewTitle, NewDescription, NewCompletionDate);
                 }
                 else
                 {
@@ -57,14 +51,14 @@ namespace ToDoListDev.Repository
             return false;
         }
 
-        public bool DeleteTask(Task DeletedTask)
+        public bool DeleteTasks(List<Task> DeletedTask)
         {
-            return DBController.DeleteTask(DeletedTask);
+            return DBController.DeleteTasks(DeletedTask);
         }
 
-        public bool CompletingTask(int TaskId)
+        public bool IsFinalChange(int TaskId, bool NewValue)
         {
-            return DBController.CompletingTask(TaskId);
+            return DBController.IsFinalChange(TaskId, NewValue);
         }
     }
 }
