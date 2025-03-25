@@ -51,9 +51,9 @@ namespace ToDoListDev.Repository
             return false;
         }
 
-        public bool DeleteTask(Task DeletedTask)
+        public bool DeleteTasks(List<Task> DeletedTask)
         {
-            return DBController.DeleteTask(DeletedTask);
+            return DBController.DeleteTasks(DeletedTask);
         }
 
         public bool IsFinalChange(int TaskId, bool NewValue)

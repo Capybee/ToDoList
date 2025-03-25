@@ -4,10 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoListDev.Views"
+        xmlns:data="clr-namespace:ToDoListDev.ViewModels"
         mc:Ignorable="d"
+        x:Name="ThisWindow"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
         Title="WindowDeleteTask" Height="1080" Width="1920">
+    <Window.DataContext>
+        <data:WindowDeleteTaskVM/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
@@ -29,14 +34,20 @@
             </Border>
         </Grid>
         <TextBlock Grid.Row="1" Text="Список задач" FontSize="40" Margin="50,0" FontWeight="Bold" HorizontalAlignment="Left"/>
-        <DataGrid Margin="0,20,0,0" Grid.Row="2" HeadersVisibility="None">
+        <DataGrid Margin="0,20,0,0" Grid.Row="2" HeadersVisibility="None" AutoGenerateColumns="False" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" SelectedItem="{Binding SelectedTask}" CanUserAddRows="False" ItemsSource="{Binding Tasks}">
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn Header="IsDeleted" Width="0.2*"/>
-                <DataGridTextColumn Header="Id" Width="0.1*"/>
-                <DataGridTextColumn Header="Title" Width="0.5*"/>
-                <DataGridTextColumn Header="CompletionDate" Width="0.2*"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Width="16" Command="{Binding DataContext.MarkTask, ElementName=ThisWindow}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Height="16" Margin="2" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Background="White"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Id" Width="0.1*" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Заголовок" Width="0.5*" Binding="{Binding Title}"/>
+                <DataGridTextColumn Header="Срок завершения" Width="0.2*" Binding="{Binding CompletionDate}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="3" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleButtonWithBottomBorder}" Content="Удалить" Width="253" Height="80" HorizontalAlignment="Center" Margin="0,2,50,2"/>
+        <Button Grid.Row="3" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleButtonWithBottomBorder}" Command="{Binding BtnDeleteClick}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Content="Удалить" Width="253" Height="80" HorizontalAlignment="Center" Margin="0,2,50,2"/>
         </Grid>
 </Window>

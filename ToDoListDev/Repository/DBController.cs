@@ -53,11 +53,14 @@ namespace ToDoListDev.Repository
             }
         }
 
-        public static bool DeleteTask(Task DeletedTask)
+        public static bool DeleteTasks(List<Task> DeletedTask)
         {
             try
             {
-                Context.Tasks.Remove(DeletedTask);
+                foreach (var T in DeletedTask)
+                {
+                    Context.Tasks.Remove(T);
+                }
                 Context.SaveChanges();
                 return true;
             }
