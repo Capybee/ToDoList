@@ -34,7 +34,7 @@
             </Border>
         </Grid>
         <TextBlock Grid.Row="1" Text="Список задач" FontSize="40" Margin="50,0" FontWeight="Bold" HorizontalAlignment="Left"/>
-        <DataGrid Margin="0,20,0,0" Grid.Row="2" HeadersVisibility="None" AutoGenerateColumns="False" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" SelectedItem="{Binding SelectedTask}" CanUserAddRows="False" ItemsSource="{Binding Tasks}">
+        <DataGrid Style="{DynamicResource DataGridStyle}" Margin="0,20,0,0" Grid.Row="2" HeadersVisibility="None" AutoGenerateColumns="False" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" SelectedItem="{Binding SelectedTask}" CanUserAddRows="False" ItemsSource="{Binding Tasks}">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
