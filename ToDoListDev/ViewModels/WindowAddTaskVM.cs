@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using ToDoListDev.Repository;
 using ToDoListDev.Views;
 using Task = ToDoListDev.Models.Task;
@@ -64,6 +65,48 @@ namespace ToDoListDev.ViewModels
 
                         WindowAddTaskInstance.DialogResult = Repository.AddTask(NewTask);
                     }
+                }));
+            }
+        }
+
+        private RelayCommand _BtnMinimizeClick;
+        public RelayCommand BtnMinimizeClick
+        {
+            get
+            {
+                return _BtnMinimizeClick ?? (_BtnMinimizeClick = new RelayCommand(obj =>
+                {
+                    Window ThisWindow = obj as Window;
+
+                    ThisWindow.WindowState = WindowState.Minimized;
+                }));
+            }
+        }
+
+        private RelayCommand _BtnMaximizeClick;
+        public RelayCommand BtnMaximizeClick
+        {
+            get
+            {
+                return _BtnMaximizeClick ?? (_BtnMaximizeClick = new RelayCommand(obj =>
+                {
+                    Window ThisWindow = obj as Window;
+
+                    ThisWindow.WindowState = (ThisWindow.WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized;
+                }));
+            }
+        }
+
+        private RelayCommand _BtnCloseClick;
+        public RelayCommand BtnCloseClick
+        {
+            get
+            {
+                return _BtnCloseClick ?? (_BtnCloseClick = new RelayCommand(obj =>
+                {
+                    Window ThisWindow = obj as Window;
+
+                    ThisWindow.Close();
                 }));
             }
         }

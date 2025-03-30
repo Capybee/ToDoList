@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Shell;
 
 namespace ToDoListDev
 {
@@ -37,6 +38,16 @@ namespace ToDoListDev
             Button ThisButton = sender as Button;
             ThisButton.IsEnabled = false;
             ThisButton.Visibility = Visibility.Hidden;
+
+            const string STYLENAME = "StylesDark";
+
+            var Uri = new Uri($"Styles/{STYLENAME}.xaml", UriKind.Relative);
+
+            ResourceDictionary ResourceDict = Application.LoadComponent(Uri) as ResourceDictionary;
+
+            Application.Current.Resources.Clear();
+
+            Application.Current.Resources.MergedDictionaries.Add(ResourceDict);
         }
 
         private void BtnRight_Click(object sender, RoutedEventArgs e)
@@ -53,6 +64,16 @@ namespace ToDoListDev
             Button ThisButton = sender as Button;
             ThisButton.IsEnabled = false;
             ThisButton.Visibility = Visibility.Hidden;
+
+            const string STYLENAME = "Styles";
+
+            var Uri = new Uri($"Styles/{STYLENAME}.xaml", UriKind.Relative);
+
+            ResourceDictionary ResourceDict = Application.LoadComponent(Uri) as ResourceDictionary;
+
+            Application.Current.Resources.Clear();
+
+            Application.Current.Resources.MergedDictionaries.Add(ResourceDict);
         }
 
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)

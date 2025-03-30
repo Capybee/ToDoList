@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="Styles\StylesDark.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Repository\db_to_do_list.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -38,6 +42,7 @@
     <Resource Include="Styles\ProjectSpace.otf" />
     <Resource Include="Styles\SourceSerifPro-Bold.ttf" />
     <Resource Include="Styles\SourceSerifPro-Regular.ttf" />
+    <Resource Include="Styles\StylesDark.xaml" />
   </ItemGroup>
 
 </Project>

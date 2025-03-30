@@ -9,32 +9,35 @@
         x:Name="ThisWindow"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
-        Title="WindowDeleteTask" Height="1080" Width="1920">
+        Title="WindowDeleteTask" Height="1080" Width="1920"
+        WindowStyle="None"
+        Style="{DynamicResource WindowStyle}">
     <Window.DataContext>
         <data:WindowDeleteTaskVM/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="0.1*"/>
             <RowDefinition Height="0.07*"/>
             <RowDefinition/>
             <RowDefinition Height="0.15*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="🗕" Command="{Binding  BtnMinimizeClick}" CommandParameter="{Binding  RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Style="{DynamicResource FrameButtonsStyle}" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource MainSize}" HorizontalAlignment="Right" Width="36" Height="36" Margin="2"/>
+            <Button Content="🗖" Command="{Binding BtnMaximizeClick}" CommandParameter="{Binding  RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Style="{DynamicResource FrameButtonsStyle}" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource MainSize}" HorizontalAlignment="Right" Width="36" Height="36" Margin="2"/>
+            <Button Content="🗙" Command="{Binding BtnCloseClick}" CommandParameter="{Binding  RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Style="{DynamicResource FrameButtonsStyle}" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource MainSize}" HorizontalAlignment="Right" Width="36" Height="36" Margin="2"/>
+        </StackPanel>
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Text="To-Do List" Foreground="{DynamicResource AccentBrush}" FontSize="{DynamicResource Logo}" FontFamily="{DynamicResource LogoFont}" FontWeight="Bold" Margin="50,2,0,2"/>
-            <Border x:Name="SwitchBorder" Grid.Column="1" Width="113" Height="58" HorizontalAlignment="Right" Margin="0,2,50,2" BorderThickness="2" BorderBrush="Black" CornerRadius="30">
-                <StackPanel Orientation="Horizontal">
-                    <Button Style="{DynamicResource StyleSwitchButton}" x:Name="BtnLeft" Background="{DynamicResource MainBlackBrush}" Margin="10,4" Width="40" Height="40" HorizontalAlignment="Left" BorderThickness="0" Click="BtnLeft_Click"/>
-                    <Button Style="{DynamicResource StyleSwitchButton}" x:Name="BtnRight" Background="{DynamicResource MainWhite}" Margin="0,4,10,4" Width="40" Height="40" HorizontalAlignment="Right" BorderThickness="0" Click="BtnRight_Click"/>
-                </StackPanel>
-            </Border>
+            
         </Grid>
-        <TextBlock Grid.Row="1" Text="Список задач" FontSize="40" Margin="50,0" FontWeight="Bold" HorizontalAlignment="Left"/>
-        <DataGrid Style="{DynamicResource DataGridStyle}" Margin="0,20,0,0" Grid.Row="2" HeadersVisibility="None" AutoGenerateColumns="False" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" SelectedItem="{Binding SelectedTask}" CanUserAddRows="False" ItemsSource="{Binding Tasks}">
+        <TextBlock Grid.Row="2" Text="Список задач" FontSize="40" Margin="50,0" FontWeight="Bold" HorizontalAlignment="Left"/>
+        <DataGrid Style="{DynamicResource DataGridStyle}" Margin="0,20,0,0" Grid.Row="3" HeadersVisibility="None" AutoGenerateColumns="False" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" SelectedItem="{Binding SelectedTask}" CanUserAddRows="False" ItemsSource="{Binding Tasks}">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -48,6 +51,6 @@
                 <DataGridTextColumn Header="Срок завершения" Width="0.2*" Binding="{Binding CompletionDate}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="3" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleButtonWithBottomBorder}" Command="{Binding BtnDeleteClick}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Content="Удалить" Width="253" Height="80" HorizontalAlignment="Center" Margin="0,2,50,2"/>
+        <Button Grid.Row="4" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Style="{DynamicResource StyleButtonWithBottomBorder}" Command="{Binding BtnDeleteClick}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Content="Удалить" Width="253" Height="80" HorizontalAlignment="Center" Margin="0,2,50,2"/>
         </Grid>
 </Window>

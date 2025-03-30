@@ -93,7 +93,47 @@ namespace ToDoListDev.ViewModels
             }
         }
 
-        
+        private RelayCommand _BtnMinimizeClick;
+        public RelayCommand BtnMinimizeClick
+        {
+            get
+            {
+                return _BtnMinimizeClick ?? (_BtnMinimizeClick = new RelayCommand(obj =>
+                {
+                    Window ThisWindow = obj as Window;
+
+                    ThisWindow.WindowState = WindowState.Minimized;
+                }));
+            }
+        }
+
+        private RelayCommand _BtnMaximizeClick;
+        public RelayCommand BtnMaximizeClick
+        {
+            get
+            {
+                return _BtnMaximizeClick ?? (_BtnMaximizeClick = new RelayCommand(obj =>
+                {
+                    Window ThisWindow = obj as Window;
+
+                    ThisWindow.WindowState = (ThisWindow.WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized;
+                }));
+            }
+        }
+
+        private RelayCommand _BtnCloseClick;
+        public RelayCommand BtnCloseClick
+        {
+            get
+            {
+                return _BtnCloseClick ?? (_BtnCloseClick = new RelayCommand(obj =>
+                {
+                    Window ThisWindow = obj as Window;
+
+                    ThisWindow.Close();
+                }));
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

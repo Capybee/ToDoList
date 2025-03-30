@@ -8,37 +8,45 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
-        Title="WindowChangeTask" Height="1000" Width="1400">
+        Title="WindowChangeTask" Height="1000" Width="1400"
+        WindowStyle="None"
+        Style="{DynamicResource WindowStyle}">
     <Window.DataContext>
         <data:WindowChangeTaskVM/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="0.18*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Content="Отменить" Command="{Binding BtnCancelClick}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Style="{DynamicResource StyleButtonWithBottomBorder}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Grid.Row="0" Width="253" Height="80" Margin="50,25,0,25" HorizontalAlignment="Left"/>
-        <Button Content="Сохранить" Command="{Binding BtnSaveClick}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Style="{DynamicResource StyleButtonWithBottomBorder}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Grid.Row="0" Width="253" Height="80" Margin="0,25,50,25" HorizontalAlignment="Right"/>
-        <Grid Grid.Row="1">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="🗕" Command="{Binding  BtnMinimizeClick}" CommandParameter="{Binding  RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Style="{DynamicResource FrameButtonsStyle}" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource MainSize}" HorizontalAlignment="Right" Width="36" Height="36" Margin="2"/>
+            <Button Content="🗖" Command="{Binding BtnMaximizeClick}" CommandParameter="{Binding  RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Style="{DynamicResource FrameButtonsStyle}" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource MainSize}" HorizontalAlignment="Right" Width="36" Height="36" Margin="2"/>
+            <Button Content="🗙" Command="{Binding BtnCloseClick}" CommandParameter="{Binding  RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Style="{DynamicResource FrameButtonsStyle}" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource MainSize}" HorizontalAlignment="Right" Width="36" Height="36" Margin="2"/>
+        </StackPanel>
+        <Button Content="Отменить" Command="{Binding BtnCancelClick}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Style="{DynamicResource StyleButtonWithBottomBorder}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Grid.Row="1" Width="253" Height="80" Margin="50,25,0,25" HorizontalAlignment="Left"/>
+        <Button Content="Сохранить" Command="{Binding BtnSaveClick}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Style="{DynamicResource StyleButtonWithBottomBorder}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Grid.Row="1" Width="253" Height="80" Margin="0,25,50,25" HorizontalAlignment="Right"/>
+        <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.5*"/>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Orientation="Vertical">
-                <TextBlock Text="Заголовок" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource Title2}" Margin="50,25,0,0"/>
-                <Border Width="439" Height="2" HorizontalAlignment="Left" Margin="50,0,0,0" BorderThickness="5" BorderBrush="Black"/>
-                <TextBox Margin="50,25,50,25" Text="{Binding Title}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Width="1300" HorizontalAlignment="Left" Height="30"/>
+                <TextBlock Style="{DynamicResource TextBlockStyle}" Text="Заголовок" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource Title2}" Margin="50,25,0,0"/>
+                <Border Style="{DynamicResource SeparatorStyle}" Width="439" Height="2" HorizontalAlignment="Left" Margin="50,0,0,0" BorderThickness="5" />
+                <TextBox Style="{DynamicResource TextBoxStyle}" Margin="50,25,50,25" Text="{Binding Title}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Width="1300" HorizontalAlignment="Left" Height="30"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Row="1">
-                <TextBlock Text="Описание" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource Title2}" Margin="50,25,0,0"/>
-                <Border Width="439" Height="2" HorizontalAlignment="Left" Margin="50,0,0,0" BorderThickness="5" BorderBrush="Black"/>
-                <TextBox Margin="50,25,50,25" Text="{Binding Description}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Height="220"/>
+                <TextBlock Style="{DynamicResource TextBlockStyle}" Text="Описание" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource Title2}" Margin="50,25,0,0"/>
+                <Border Style="{DynamicResource SeparatorStyle}" Width="439" Height="2" HorizontalAlignment="Left" Margin="50,0,0,0" BorderThickness="5" />
+                <TextBox Style="{DynamicResource TextBoxStyle}" Margin="50,25,50,25" Text="{Binding Description}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Height="220"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Row="2">
-                <TextBlock Text="Срок выполнения" Margin="50,25,0,0" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource Title2}"/>
-                <Border Width="439" Height="2" HorizontalAlignment="Left" Margin="50,0,0,0" BorderThickness="5" BorderBrush="Black"/>
-                <DatePicker Margin="50,25" SelectedDate="{Binding CompletionDate}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Width="400" HorizontalAlignment="Left" Height="220"/>
+                <TextBlock Style="{DynamicResource TextBlockStyle}" Text="Срок выполнения" Margin="50,25,0,0" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource Title2}"/>
+                <Border Style="{DynamicResource SeparatorStyle}" Width="439" Height="2" HorizontalAlignment="Left" Margin="50,0,0,0" BorderThickness="5" />
+                <DatePicker Style="{DynamicResource DatePicker}" Margin="50,25" SelectedDate="{Binding CompletionDate}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Width="400" HorizontalAlignment="Left" Height="220"/>
             </StackPanel>
         </Grid>
     </Grid>

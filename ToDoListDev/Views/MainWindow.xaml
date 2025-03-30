@@ -10,18 +10,26 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
-        Title="MainWindow" Height="1080" Width="1920">
+        Title="MainWindow" Height="1080" Width="1920"
+        WindowStyle="None"
+        Style="{DynamicResource WindowStyle}">
     <Window.DataContext>
         <data:MainWindowVM/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="0.1*"/>
             <RowDefinition Height="0.07*"/>
             <RowDefinition/>
             <RowDefinition Height="0.15*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="🗕" Command="{Binding  BtnMinimizeClick}" CommandParameter="{Binding  RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Style="{DynamicResource FrameButtonsStyle}" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource MainSize}" HorizontalAlignment="Right" Width="36" Height="36" Margin="2"/>
+            <Button Content="🗖" Command="{Binding BtnMaximizeClick}" CommandParameter="{Binding  RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Style="{DynamicResource FrameButtonsStyle}" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource MainSize}" HorizontalAlignment="Right" Width="36" Height="36" Margin="2"/>
+            <Button Content="🗙" Command="{Binding BtnCloseClick}" CommandParameter="{Binding  RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Style="{DynamicResource FrameButtonsStyle}" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource MainSize}" HorizontalAlignment="Right" Width="36" Height="36" Margin="2"/>
+        </StackPanel>
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -34,8 +42,8 @@
                 </StackPanel>
             </Border>
         </Grid>
-        <TextBlock Grid.Row="1" Text="Список задач" FontSize="{DynamicResource Title1}" Margin="50,0" FontFamily="{DynamicResource BoldFont}" FontWeight="Bold" HorizontalAlignment="Left"/>
-        <DataGrid Foreground="{DynamicResource MainBlackBrush}" Style="{DynamicResource DataGridStyle}" Margin="0,20,0,0" Grid.Row="2" CanUserAddRows="False" SelectedItem="{Binding SelectedTask}" HeadersVisibility="None" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" ItemsSource="{Binding Tasks}" AutoGenerateColumns="False">
+        <TextBlock Grid.Row="2" Text="Список задач" Style="{DynamicResource TextBlockStyle}" FontSize="{DynamicResource Title1}" Margin="50,0" FontFamily="{DynamicResource BoldFont}" FontWeight="Bold" HorizontalAlignment="Left"/>
+        <DataGrid Foreground="{DynamicResource MainBlackBrush}" Style="{DynamicResource DataGridStyle}" Margin="0,20,0,0" Grid.Row="3" CanUserAddRows="False" SelectedItem="{Binding SelectedTask}" HeadersVisibility="None" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" ItemsSource="{Binding Tasks}" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Width="0.1*" IsReadOnly="True" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Title" Width="0.5*" IsReadOnly="True" Binding="{Binding Title}"/>
@@ -56,7 +64,7 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </DataGrid>
-        <Grid Grid.Row="3">
+        <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
