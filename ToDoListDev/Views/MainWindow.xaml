@@ -52,7 +52,7 @@
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Description}" FontSize="{DynamicResource MainSize}" FontFamily="{DynamicResource MainFont}" Margin="25"/>
+                    <TextBlock Text="{Binding Description}" FontSize="{DynamicResource MainSize}" FontFamily="{DynamicResource MainFont}" Margin="25" TextWrapping="Wrap" Width="1600"/>
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
             <DataGrid.InputBindings>

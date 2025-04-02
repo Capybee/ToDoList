@@ -36,17 +36,17 @@
             <StackPanel Grid.Row="0" Orientation="Vertical">
                 <TextBlock Style="{DynamicResource TextBlockStyle}" Text="Заголовок" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource Title2}" Margin="50,25,0,0"/>
                 <Border Style="{DynamicResource SeparatorStyle}" Width="439" Height="2" HorizontalAlignment="Left" Margin="50,0,0,0" BorderThickness="5" />
-                <TextBox Style="{DynamicResource TextBoxStyle}" Margin="50,25,50,25" Text="{Binding Title}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Width="1300" HorizontalAlignment="Left" Height="30"/>
+                <TextBox Style="{DynamicResource TextBoxStyle}" MaxLength="100" Margin="50,25,50,25" Text="{Binding Title}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Width="1300" HorizontalAlignment="Left" Height="30"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Row="1">
                 <TextBlock Style="{DynamicResource TextBlockStyle}" Text="Описание" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource Title2}" Margin="50,25,0,0"/>
                 <Border Style="{DynamicResource SeparatorStyle}" Width="439" Height="2" HorizontalAlignment="Left" Margin="50,0,0,0" BorderThickness="5" />
-                <TextBox Style="{DynamicResource TextBoxStyle}" Margin="50,25,50,25" Text="{Binding Description}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Height="220"/>
+                <TextBox Style="{DynamicResource TextBoxStyle}" MaxLength="200" TextWrapping="Wrap" Margin="50,25,50,25" Text="{Binding Description}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Height="220"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Row="2">
                 <TextBlock Style="{DynamicResource TextBlockStyle}" Text="Срок выполнения" Margin="50,25,0,0" FontFamily="{DynamicResource BoldFont}" FontSize="{DynamicResource Title2}"/>
                 <Border Style="{DynamicResource SeparatorStyle}" Width="439" Height="2" HorizontalAlignment="Left" Margin="50,0,0,0" BorderThickness="5" />
-                <DatePicker Style="{DynamicResource DatePicker}" Margin="50,25" SelectedDate="{Binding CompletionDate}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Width="400" HorizontalAlignment="Left" Height="220"/>
+                <DatePicker Style="{DynamicResource DatePicker}" Margin="50,25" SelectedDate="{Binding CompletionDate}" FontFamily="{DynamicResource MainFont}" FontSize="{DynamicResource MainSize}" Width="400" HorizontalAlignment="Left" Height="50" VerticalContentAlignment="Center"/>
             </StackPanel>
         </Grid>
     </Grid>
