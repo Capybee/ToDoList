@@ -43,10 +43,6 @@ namespace ToDoListDev.Repository
                 {
                    return DBController.UpdateTask(Id, NewTitle, NewDescription, NewCompletionDate);
                 }
-                else
-                {
-                    return false;
-                }
             }
             return false;
         }
