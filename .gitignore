@@ -2,7 +2,6 @@
 ## Бинарные файлы пакетов
 *.7z
 *.dll
-*.exe
 *.o
 *.so
 
@@ -23,7 +22,6 @@ obj/
 [Bb]uild[Ll]og.*
 *.cache
 *.ilk
-*.pdb
 *.idb
 *.log
 *.pch
@@ -35,7 +33,6 @@ obj/
 *.intermediate
 *.obj
 *.pch
-*.pdb
 *.res
 *.resources
 *.sbr
